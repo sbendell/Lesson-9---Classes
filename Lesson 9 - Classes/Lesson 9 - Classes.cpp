@@ -20,8 +20,8 @@ private:
 };
 
 Enemy::Enemy(int hps) :
-	hit_points(hps) {
-	score = new int(0);
+	hit_points(hps),
+	score(0) {
 }
 
 Enemy::~Enemy() {
