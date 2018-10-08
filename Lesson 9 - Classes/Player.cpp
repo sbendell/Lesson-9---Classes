@@ -2,9 +2,9 @@
 #include "Player.h"
 
 
-Player::Player(int hps, string Name) :
-	hit_points(hps),
-	score(0) {
+Player::Player(int hps, int Score, string Name) :
+	hit_points(hps){
+	score = new int(Score);
 	name = new string(Name);
 }
 
@@ -33,7 +33,7 @@ void Player::set_score(const int new_score) {
 	*score = new_score;
 }
 
-void Player::get_name(const string new_name) {
+void Player::set_name(const string new_name) {
 	delete name;
 	name = new string(new_name);
 }

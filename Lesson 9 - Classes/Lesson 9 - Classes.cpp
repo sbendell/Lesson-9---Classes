@@ -3,12 +3,13 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include "Player.h"
 
 using namespace std;
 
 class Enemy {
 public:
-	Enemy(int hps);
+	Enemy(int hps, int Score);
 	~Enemy();
 	int get_hit_points() const;
 	int get_score() const;
@@ -19,9 +20,9 @@ private:
 	int* score;
 };
 
-Enemy::Enemy(int hps) :
-	hit_points(hps),
-	score(0) {
+Enemy::Enemy(int hps, int Score) :
+	hit_points(hps) {
+	score = new int(Score);
 }
 
 Enemy::~Enemy() {
@@ -46,17 +47,24 @@ void Enemy::set_score(const int new_score) {
 
 int main(void) {
 
-	Enemy e1(2);
+	Enemy e1(2, 5);
 	cout << "hit points = " << e1.get_hit_points() << "\n";
 
-	Enemy* e2 = new Enemy(2);
+	Enemy* e2 = new Enemy(2, 5);
 	e2->set_hit_points(3);
 	cout << "hit points = " << e2->get_hit_points() << "\n";
 
 	e2->set_score(2);
 	cout << "score = " << e2->get_score() << "\n";
 
+	Player p1(50, 5, "Samuel");
+	cout << p1.get_name() << "\n";
+	p1.set_name("Bendiish");
+	cout << p1.get_name();
+
 	delete e2;
 	e2 = NULL;
+	int x;
+	cin >> x;
 	return 0;
 }
